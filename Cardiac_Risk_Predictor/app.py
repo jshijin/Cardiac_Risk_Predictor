@@ -22,11 +22,11 @@ if __name__ == '__main__':
         scaler = pkl.load(f)
  
     routes.configure_routes(app,model,model_columns, scaler)
-
-    import os
-    HOST = os.environ.get('SERVER_HOST', 'localhost')
-    try:
-        PORT = int(os.environ.get('SERVER_PORT', '5555'))
-    except ValueError:
-        PORT = 5555
-    app.run(HOST, PORT)
+    app.run()
+    #import os
+    #HOST = os.environ.get('SERVER_HOST', 'localhost')
+    #try:
+    #    PORT = int(os.environ.get('SERVER_PORT', '5555'))
+    #except ValueError:
+    #    PORT = 5555
+    #app.run(HOST, PORT)
