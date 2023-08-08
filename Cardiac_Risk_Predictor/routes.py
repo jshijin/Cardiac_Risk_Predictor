@@ -7,7 +7,7 @@ import numpy as np
 #Routes
 
 def configure_routes(app, model, model_columns, scaler):
-    @app.route('/predict', methods=[ 'POST'])
+    @app.route('/api/predict', methods=[ 'POST'])
     def predict():
         """
         API to handle the prediction process.
