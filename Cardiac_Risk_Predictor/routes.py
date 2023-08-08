@@ -1,5 +1,5 @@
 from flask import redirect, render_template, request, session, url_for,jsonify
-from app import app
+import app
 import traceback
 import pandas as pd
 import numpy as np

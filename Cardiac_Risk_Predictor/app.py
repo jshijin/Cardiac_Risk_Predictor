@@ -18,7 +18,7 @@ if __name__ == '__main__':
     model_columns = jl.load("log_reg_model_columns.pkl")
 
     scaler = None
-    with open('scaler.pkl', 'rb') as f:
+    with open('log_reg_scaler.pkl', 'rb') as f:
         scaler = pkl.load(f)
  
     routes.configure_routes(app,model,model_columns, scaler)
