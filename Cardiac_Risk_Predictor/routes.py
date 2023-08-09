@@ -7,6 +7,10 @@ import numpy as np
 #Routes
 
 def configure_routes(app, model, model_columns, scaler):
+    @app.route('/', methods=[ 'GET'])
+    def hello():
+        return '<h1>Hello, World!</h1>'
+
     @app.route('/api/predict', methods=[ 'POST'])
     def predict():
         """
