@@ -1,3 +1,4 @@
+from subprocess import STDOUT
 from flask import Flask,request, jsonify
 import joblib as jl
 import pickle as pkl
@@ -22,7 +23,9 @@ if __name__ == '__main__':
         scaler = pkl.load(f)
  
     routes.configure_routes(app,model,model_columns, scaler)
-    app.run(host="0.0.0.0", port=8080, debug=True)
+
+    STDOUT("I am here")
+    app.run(debug=True)
     #import os
     #HOST = os.environ.get('SERVER_HOST', 'localhost')
     #try:
