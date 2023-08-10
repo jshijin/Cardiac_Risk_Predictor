@@ -2,6 +2,10 @@ from flask import Flask,request, jsonify
 import joblib as jl
 import pickle as pkl
 import routes
+import traceback
+import pandas as pd
+import numpy as np
+
 
 app = Flask(__name__)
 
@@ -54,13 +58,13 @@ if __name__ == '__main__':
     with open('log_reg_scaler.pkl', 'rb') as f:
         scaler = pkl.load(f)
 
-    app.run()
-    #import os
-    #HOST = os.environ.get('SERVER_HOST', 'localhost')
-    #try:
-    #    PORT = int(os.environ.get('SERVER_PORT', '5555'))
-    #except ValueError:
-    #    PORT = '5555'
-    #app.run(HOST, PORT)
+    #app.run()
+    import os
+    HOST = os.environ.get('SERVER_HOST', 'localhost')
+    try:
+        PORT = int(os.environ.get('SERVER_PORT', '5555'))
+    except ValueError:
+        PORT = '5555'
+    app.run(HOST, PORT)
 
         
