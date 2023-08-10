@@ -12,6 +12,10 @@ app = Flask(__name__)
 # Make the WSGI interface available at the top level so wfastcgi can get it.
 wsgi_app = app.wsgi_app
 
+model = None
+model_columns = None
+scaler = None
+
 @app.route('/api/predict', methods=[ 'POST'])
 def predict():
     """
@@ -54,17 +58,16 @@ if __name__ == '__main__':
     #Load model columns
     model_columns = jl.load("log_reg_model_columns.pkl")
 
-    scaler = None
     with open('log_reg_scaler.pkl', 'rb') as f:
         scaler = pkl.load(f)
 
-    #app.run()
-    import os
-    HOST = os.environ.get('SERVER_HOST', 'localhost')
-    try:
-        PORT = int(os.environ.get('SERVER_PORT', '5555'))
-    except ValueError:
-        PORT = '5555'
-    app.run(HOST, PORT)
+    app.run()
+    #import os
+    #HOST = os.environ.get('SERVER_HOST', 'localhost')
+    #try:
+    #    PORT = int(os.environ.get('SERVER_PORT', '5555'))
+    #except ValueError:
+    #    PORT = '5555'
+    #app.run(HOST, PORT)
 
         
