@@ -31,7 +31,6 @@
     <Compile Include="models\decision_tree_model.py" />
     <Compile Include="models\knn_model.py" />
     <Compile Include="models\logistic_regression_model.py" />
-    <Compile Include="routes.py" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="dataset\heart.csv" />
