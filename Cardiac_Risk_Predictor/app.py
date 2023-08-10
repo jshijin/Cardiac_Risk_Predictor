@@ -24,7 +24,7 @@ model_columns = jl.load("log_reg_model_columns.pkl")
 with open('log_reg_scaler.pkl', 'rb') as f:
    scaler = pkl.load(f)
 
-@app.route('/api/predict', methods=[ 'POST'])
+@app.route('/predict', methods=[ 'POST'])
 def predict():
     """
     API to handle the prediction process.
