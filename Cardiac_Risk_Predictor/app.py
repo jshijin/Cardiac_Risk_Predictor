@@ -1,7 +1,6 @@
 from flask import Flask,request, jsonify
 import joblib as jl
 import pickle as pkl
-import routes
 import traceback
 import pandas as pd
 import numpy as np
