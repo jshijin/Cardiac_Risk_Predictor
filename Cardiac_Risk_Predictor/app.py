@@ -1,12 +1,13 @@
-from flask import Flask,request, jsonify
+from flask import Flask,request, jsonify, redirect
 import joblib as jl
 import pickle as pkl
 import traceback
 import pandas as pd
 import numpy as np
-
+from flask_swagger_ui import get_swaggerui_blueprint
 
 app = Flask(__name__)
+
 
 # Make the WSGI interface available at the top level so wfastcgi can get it.
 wsgi_app = app.wsgi_app
@@ -23,6 +24,11 @@ model_columns = jl.load("log_reg_model_columns.pkl")
 
 with open('log_reg_scaler.pkl', 'rb') as f:
    scaler = pkl.load(f)
+
+# Automatically redirect to Swagger UI
+@app.route('/')
+def index():
+    return redirect('/swagger', code=302)
 
 @app.route('/predict', methods=[ 'POST'])
 def predict():
@@ -57,6 +63,18 @@ def predict():
             return jsonify({'error_log_prediction': traceback.format_exc()})
     else:
         return ('Model not defined')
+
+
+# Create a Swagger UI blueprint
+swaggerui_blueprint = get_swaggerui_blueprint(
+    '/swagger',
+    '/static/swagger.json',  # Path to swagger.json file
+    config={
+        'app_name': "Cardiac Risk Prediction API"
+    }
+)
+
+app.register_blueprint(swaggerui_blueprint, url_prefix="/swagger")
  
 if __name__ == '__main__':
     app.run()

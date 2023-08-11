@@ -35,10 +35,12 @@
   <ItemGroup>
     <Content Include="dataset\heart.csv" />
     <Content Include="requirements.txt" />
+    <Content Include="static\swagger.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="dataset\" />
     <Folder Include="models\" />
+    <Folder Include="static\" />
     <Folder Include="templates\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />
